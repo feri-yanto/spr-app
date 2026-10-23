@@ -3,7 +3,11 @@ import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
+import TopNavbar from "@/components/partials/top-navbar";
+import AppSidebar from "@/components/partials/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+
+const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +30,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", figtree.variable)}
     >
-      <body className="min-h-full flex flex-col bg-mist-50">{children}</body>
+      <body className="min-h-full flex flex-col bg-muted">
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="flex-1">
+            <TopNavbar />
+            {children}
+          </main>
+        </SidebarProvider>
+      </body>
     </html>
   );
 }
