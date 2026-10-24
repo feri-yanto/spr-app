@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AddCircleHalfDotIcon, ChevronDownIcon, Home02Icon, NoteIcon, TransactionHistoryIcon } from "@hugeicons/core-free-icons";
@@ -25,7 +26,7 @@ export default function AppSidebar() {
           <SidebarGroupLabel>Utama</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton isActive size="md">
+              <SidebarMenuButton isActive size="md" render={<Link href="/" />}>
                 <HugeiconsIcon icon={Home02Icon} /> <span>Beranda</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -39,7 +40,9 @@ export default function AppSidebar() {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuSubButton><HugeiconsIcon icon={AddCircleHalfDotIcon} /> <span>Buat izin</span></SidebarMenuSubButton>
+                      <SidebarMenuSubButton render={<Link href="/permits/create" />}>
+                        <HugeiconsIcon icon={AddCircleHalfDotIcon} /> <span>Buat izin</span>
+                      </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
                       <SidebarMenuSubButton><HugeiconsIcon icon={TransactionHistoryIcon} /> <span>Riwayat izin</span></SidebarMenuSubButton>
